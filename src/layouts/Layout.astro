@@ -1,51 +1,240 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+const navItems = [
+  {
+    path: "/",
+    label: "Home",
+  },
+  {
+    path: "/about",
+    label: "Activities",
+  },
+  {
+    path: "/team",
+    label: "Team",
+  },
+  {
+    path: "/gallery",
+    label: "Gallery",
+  },
+  {
+    path: "/youth-declaration",
+    label: "Youth Declaration",
+  },
+];
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Six+Caps:regular%7CArchivo+Narrow:regular,600,700,italic%7CArchivo:200,300,regular,600,800"
+      media="all"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="bg-merino">
+      <nav class="flex justify-between pt-5vh px-[2vw] sm:px-10vw">
+        <h1 class="pl-2.5 sm:pl-0">
+          <a href="/">
+            <img
+              width="196px"
+              src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/g3blb1ayrmoluoxzu5z2"
+              alt="Montreal Youth Force 2022"
+            />
+          </a>
+        </h1>
+        <ul class="hidden md:flex md:content-center">
+          {
+            // FIXME: Current label should have opacity of 50%
+            // Items are listed slightly lower than original
+            navItems.map((item) => {
+              return (
+                <li>
+                  <a class="text-lg font-subheading p-5" href={item.path}>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+
+        <!-- TODO: Add hamburger menu -->
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <slot />
+
+    <footer class="bg-black px-10vw py-10vh">
+      <div class="flex justify-center">
+        <img
+          class="w-[200px] sm:w-[250px]"
+          src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/rbd0gaxb7qkpsd2kosfv"
+          alt="LetsStopAIDS x Montreal Youth Force 2022"
+        />
+      </div>
+
+      <div
+        class="pt-[10vh] md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.25fr)_minmax(0,1fr)] md:grid-rows-2"
+      >
+        <span></span>
+
+        <!-- TODO: Add horizontal red line -->
+        <div class="hidden md:block md:row-span-2 md:justify-self-center">
+          <img
+            src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/k9t60djip6byiel36g7j"
+            alt="Red Line"
+          />
+        </div>
+
+        <div class="justify-self-end md:justify-self-start">
+          <a href="/">
+            <img
+              class="pl-4"
+              src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/td6xdnduuoeexyuco08w"
+              alt="Montreal Youth Force 2022"
+            />
+          </a>
+          <ul class="flex content-center">
+            <li class="p-4">
+              <a
+                href="https://www.facebook.com/aidsyouthforces"
+                target="_blank"
+              >
+                <img
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/zbk1d3nnemoirfaosx2q"
+                  alt="Facebook"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a
+                href="https://www.instagram.com/aidsyouthforces"
+                target="_blank"
+              >
+                <img
+                  width="32px"
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/jyv6men2tj08xz19bmiy"
+                  alt="Instagram"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a href="https://x.com/aidsyouthforces" target="_blank">
+                <img
+                  width="36px"
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/dpceicnhkrirctgrlshc"
+                  alt="XTwitter"
+                />
+              </a>
+            </li>
+          </ul>
+          <p class="font-subheading text-base text-merino/75 pl-4">
+            <a href="mailto:aidsyouthforce@gmail.com">
+              aidsyouthforce@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div class="justify-self-end">
+          <a href="https://letsstopaids.org/" target="_blank">
+            <img
+              class="pl-4"
+              src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/iblqf3cqqkcszojvupue"
+              alt="LetsStopAIDS"
+            />
+          </a>
+          <ul class="flex content-center">
+            <li class="p-4">
+              <a href="https://www.facebook.com/LetsStopAIDS/" target="_blank">
+                <img
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/zbk1d3nnemoirfaosx2q"
+                  alt="Facebook"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a href="https://www.instagram.com/letsstopaids/" target="_blank">
+                <img
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/jyv6men2tj08xz19bmiy"
+                  alt="Instagram"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a href="https://x.com/LetsStopAIDS" target="_blank">
+                <img
+                  width="36px"
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/dpceicnhkrirctgrlshc"
+                  alt="XTwitter"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a href="https://www.tiktok.com/@letsstopaids" target="_blank">
+                <img
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/r4niakhsok1nt2u0pxah"
+                  alt="TikTok"
+                />
+              </a>
+            </li>
+            <li class="p-4">
+              <a
+                href="https://www.youtube.com/channel/UCTkxmYJZ-IgIosZhlguNtFg"
+                target="_blank"
+              >
+                <img
+                  width="36px"
+                  src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/z9evahhzzqv8wtyg6cnb"
+                  alt="YouTube"
+                />
+              </a>
+            </li>
+          </ul>
+
+          <div class="flex justify-center content-center gap-4 pl-4 py-0">
+            <!-- Try not to use margin -->
+            <img
+              class="align-middle align-self-center h-[17px] mt-1"
+              src="https://res.cloudinary.com/dsvly11gz/image/upload/f_auto,q_auto/v1/MonrealYouthForce/p15cgdhlryaryraslwlz"
+              alt="Location Indicator"
+              loading="lazy"
+            />
+            <p class="py-0 leading-6 font-subheading text-lg text-merino/75">
+              160 John St, Suite 200, Toronto, ON M5V 2E5
+            </p>
+          </div>
+        </div>
+        <span></span>
+      </div>
+      <p class="font-subheading text-lg text-merino/75 text-center pt-5vh">
+        COPYRIGHT 2022
+      </p>
+    </footer>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
 </style>
