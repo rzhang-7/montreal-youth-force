@@ -1,0 +1,132 @@
+---
+import SocialLinks from './SocialLinks.astro'
+
+export type SocialLink = {
+	platform: string
+	href: string
+	text: string
+	src: string
+}
+
+const myfSocial: SocialLink[] = [
+  {
+    platform: "facebook",
+    href: "https://www.facebook.com/aidsyouthforces",
+    text: "Connect with Montreal Youth Force on Facebook",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/facebook"
+  },
+  {
+    platform: "instagram",
+    href: "https://www.instagram.com/aidsyouthforces",
+    text: "Follow Montreal Youth Force on Instagram",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/instagram"
+  },
+  {
+    platform: "twitterx",
+    href: "https://www.twitter.com/aidsyouthforces",
+    text: "Follow Montreal Youth Force on Twitter",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/twitterx"
+  }
+]
+
+const lsaSocial: SocialLink[] = [
+  {
+    platform: "facebook",
+    href: "https://www.facebook.com/LetsStopAIDS",
+    text: "Connect with LetsStopAIDS on Facebook",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/facebook"
+  },
+  {
+    platform: "instagram",
+    href: "https://www.instagram.com/LetsStopAIDS",
+    text: "Follow LetsStopAIDS on Instagram",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/instagram"
+  },
+  {
+    platform: "twitterx",
+    href: "https://www.twitter.com/LetsStopAIDS",
+    text: "Follow LetsStopAIDS on Twitter",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/twitterx"
+  },
+  {
+    platform: "tiktok",
+    href: "https://www.tiktok.com/@letsstopaids",
+    text: "Follow LetsStopAIDS on TikTok",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/tiktok"
+  },
+  {
+    platform: "youtube",
+    href: "https://www.youtube.com/channel/UCTkxmYJZ-IgIosZhlguNtFg",
+    text: "Watch LetsStopAIDS on Youtube",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/youtube"
+  },
+
+]
+
+---
+
+<footer class="bg-black text-merino p-5vw sm:px-10vw">
+  <div class="flex justify-center">
+    <img
+      class="w-[200px] sm:w-[250px]"
+      src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/rbd0gaxb7qkpsd2kosfv"
+      alt="LetsStopAIDS x Montreal Youth Force 2022"
+    />
+  </div>
+
+  <div
+    class="flex flex-col pt-10vh justify-center gap-8 sm:gap-[4vw] sm:flex-row-reverse"
+  >
+    <div class="flex flex-col self-end sm:flex-1 sm:self-start">
+      <a href="/">
+        <img
+          class="pl-4"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-white"
+          alt="Montreal Youth Force 2022"
+        />
+      </a>
+      <SocialLinks links={myfSocial}/>
+      <p
+        class="font-subheading float-right sm:float-none text-base text-merino/75 pl-4"
+      >
+        <a href="mailto:aidsyouthforce@gmail.com"> aidsyouthforce@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="block bg-red h-1 rounded-3xl sm:hidden"></div>
+    <div class="hidden sm:flex sm:justify-center sm:shrink">
+      <img
+        src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/k9t60djip6byiel36g7j"
+        alt="Red Line"
+      />
+    </div>
+
+    <div class="flex justify-end self-start pb-5vh sm:flex-1 sm:self-end">
+      <div>
+        <a href="https://letsstopaids.org/" target="_blank">
+          <img
+            class="pl-4"
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/letsstopaids"
+            alt="LetsStopAIDS"
+          />
+        </a>
+        <SocialLinks links={lsaSocial}/>
+        <div class="flex items-center gap-4 pl-4 py-0">
+          <img
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/p15cgdhlryaryraslwlz"
+            alt="Location Indicator"
+            loading="lazy"
+          />
+          <p
+            class="py-0 leading-6 font-subheading text-base sm:text-lg text-merino/75"
+          >
+            160 John St, Suite 200, Toronto, ON M5V 2E5
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="font-subheading text-lg text-merino/75 text-center pt-5vh">
+    COPYRIGHT 2022
+  </p>
+</footer>

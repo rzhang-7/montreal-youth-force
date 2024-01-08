@@ -1,0 +1,425 @@
+---
+import Layout from "../layouts/main.astro";
+import Button from "../components/Button.astro";
+
+// ? There are asterisks under some timeslots but idk what they mean
+// The whole table has contrast issues??
+type Row = {
+  time: string;
+  activity: string;
+  description?: string;
+  colour: string;
+};
+
+type Table = {
+  date: string;
+  rows: Row[];
+};
+
+const tblContents = [
+  {
+    index: "01",
+    path: "#about",
+    label: "About",
+  },
+  {
+    index: "02",
+    path: "#schedule",
+    label: "Schedule",
+  },
+  {
+    index: "03",
+    path: "#pre-conference",
+    label: "Pre-Conference",
+  },
+  {
+    index: "04",
+    path: "#youth-pavilion",
+    label: "Youth Pavilion",
+  },
+  {
+    index: "05",
+    path: "#youth-reception",
+    label: "Youth Reception",
+  },
+];
+
+const schedule: Table[] = [
+  {
+    date: "Saturday, July 30th",
+    rows: [
+      {
+        time: "10:30 - 11:30",
+        activity: "Youth Pavilion - Games & Activities",
+        colour: "#ce2c23",
+      },
+      {
+        time: "11:30 - 12:30",
+        activity: "Global Village Ceremony",
+        colour: "#ce2c23",
+      },
+      {
+        time: "12:30 - 13:30",
+        activity: "Dialogue with High-Level Stakeholders",
+        description: "Youth Recommendations",
+        colour: "#ce2c23",
+      },
+      {
+        time: "13:30 - 14:30",
+        activity: "How to use Media for Advocacy",
+        description: "Youth Recommendations",
+        colour: "#ce2c23",
+      },
+      {
+        time: "14:30 - 15:30",
+        activity: "Youth Advocacy March",
+        colour: "#ce2c23",
+      },
+
+      {
+        time: "15:30 - 16:30",
+        activity: "Networking Session",
+        description: "Speed Networking Session, Refreshments Provided",
+        colour: "#ce2c23",
+      },
+      {
+        time: "16:30 - 18:00",
+        activity: "Youth Pavilion - Games & Activities",
+        colour: "#ce2c23",
+      },
+    ],
+  },
+  {
+    date: "Sunday, July 31st",
+    rows: [
+      {
+        time: "10:30 - 11:30",
+        activity: "Youth Pavilion - Games & Activities",
+        colour: "#ce2c23",
+      },
+      {
+        time: "11:30 - 12:30",
+        activity: "Networking Session",
+        description:
+          "Keeping up the Momentum Post-Conference, Refreshments Provided",
+        colour: "#ce2c23",
+      },
+      {
+        time: "12:30 - 13:30",
+        activity: "Youth Leaders Panel Session",
+        colour: "#ce2c23",
+      },
+      {
+        time: "13:30 - 14:30",
+        activity: "Sports & HIV",
+        description: "Using Sports to Boost Impact of Advocacy Campaigns",
+        colour: "#ce2c23",
+      },
+      {
+        time: "14:30 - 15:30",
+        activity: "Break",
+        colour: "#ce2c23",
+      },
+      // 30 minutes of nothing??
+      {
+        time: "16:00 - 18:00",
+        activity: "Youth Reception ✨",
+        colour: "#ce2c23",
+      },
+    ],
+  },
+  {
+    date: "Monday, August 1st",
+    rows: [
+      {
+        time: "10:30 - 11:30",
+        activity: "Youth Pavilion - Games & Activities",
+        colour: "#ce2c23",
+      },
+      {
+        time: "11:30 - 12:30",
+        activity: "Networking Session",
+        description: "Treasure-Hunt Networking, Refreshments Provided",
+        colour: "#ce2c23",
+      },
+      {
+        time: "12:30 - 13:30",
+        activity: "Youth Lead Organization Showcase",
+        colour: "#ce2c23",
+      },
+      {
+        time: "13:30 - 14:30",
+        activity: "Open-Mic, Poetry Slam, Storytelling & Music",
+        colour: "#ce2c23",
+      },
+      {
+        time: "14:30 - 15:30",
+        activity: "Next Steps",
+        description: "Keeping up the Momentum Post-Conference",
+        colour: "#ce2c23",
+      },
+
+      {
+        time: "15:30 - 16:30",
+        activity: "Networking Session",
+        description: "Refreshments Provided",
+        colour: "#ce2c23",
+      },
+      {
+        time: "16:30 - 18:00",
+        activity: "Youth Pavilion - Games & Activities",
+        colour: "#ce2c23",
+      },
+    ],
+  },
+];
+---
+
+<Layout title="About" theme="dark">
+  <section class="bg-black text-merino py-5vh">
+    <div class="flex flex-col gap-8 items-center justify-center">
+      <div class="flex flex-col gap-4 items-center">
+        <h1 class="font-heading text-5xl sm:text-7xl text-center">Hosted by</h1>
+        <img
+          class="w-36 sm:w-60"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/letsstopaids"
+          alt="LetsStopAIDS"
+        />
+      </div>
+      <div class="bg-red h-0.5 w-5/6 sm:w-80 rounded-3xl"></div>
+      <ol class="font-heading text-xl sm:text-2xl">
+        {
+          tblContents.map((item) => (
+            <li class="pt-1">
+              <small class="text-sm font-subheading pr-1">{item.index}</small>
+              <a data-scroll-to data-scroll-to-duration="2" href={item.path}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+  <section id="about" class="bg-black text-merino pt-10vh p-10vw">
+    <div class="flex flex-col gap-4">
+      <h2 class="font-heading text-4xl sm:text-6xl">About</h2>
+      <h3 class="font-subheading font-bold text-3xl">
+        The Youth Force is a global platform for young people to take part in
+        the International AIDS Conference as youth advocates and leaders.
+      </h3>
+      <div class="flex items-center">
+        <p class="text-lg">
+          This year the Youth Force is hosted by LetsStopAIDS and is made up of
+          55 individuals representing over 18 countries. It is a collective of
+          over 12 local and international youth-led and youth-serving AIDS
+          Service organizations that are committed to creating a safe space for
+          young people at the conference. Young people are not a homogeneous
+          group; we are strong in our diversity. The YouthForce brings young
+          people from different communities together to collectively learn,
+          network and advocate.
+        </p>
+        <img
+          class="hidden sm:block px-5vw h-auto"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/peace-sign"
+          alt="Peace sign"
+        />
+      </div>
+    </div>
+  </section>
+  <section id="schedule" class="bg-merino text-red px-5vw py-10vh">
+    <div class="flex flex-col gap-4 md:flex-row pb-5vh">
+      {
+        schedule.map((item) => (
+          <div class="flex flex-col gap-4 w-full">
+            <h2 class="text-red font-body font-bold text-3xl text-center">
+              {item.date}
+            </h2>
+            <table>
+              <tbody class="text-merino grid auto-rows-fr">
+                {item.rows.map((row) => (
+                  <tr class={`bg-[${row.colour}] flex`}>
+                    <td class="basis-[45%] p-2.5 text-sm">{row.time}</td>
+                    <td class="basis-[55%] p-2.5">
+                      <p class="text-lg leading-5">{row.activity}</p>
+                      <p class="text-xs">{row.description}</p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))
+      }
+    </div>
+    <Button
+      src="https://uploads-ssl.webflow.com/62b21b4144a242c86743072f/62e4a0da16c2b17f6f0570fa_MYF%20Schedule%20(1).pdf"
+      text="Schedule (PDF)"
+    />
+  </section>
+  <section
+    id="pre-conference"
+    class="bg-merino text-grey px-5vw md:px-10vw py-10vh"
+  >
+    <article>
+      <!-- ! Text is misaligned -->
+      <div class="flex items-end flex-col sm:flex-row pb-4">
+        <div class="flex items-end">
+          <img
+            class="w-5"
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-curl-vertical"
+            alt="ribbon curl"
+          />
+          <h2
+            class="font-heading text-black text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
+          >
+            Pre-Conference
+          </h2>
+        </div>
+        <h2 class="font-heading text-red text-6xl md:text-7xl lg:text-9xl">
+          28.07.22
+        </h2>
+      </div>
+      <div class="text-2xl font-semibold">
+        <p>
+          <time datetime="2022-07-28">July 28, 2022</time>
+        </p>
+        <p>
+          <time datetime="14:00">2:00PM</time> to <time datetime="17:30"
+            >5:30PM</time
+          >
+        </p>
+      </div>
+      <!-- ! Original page has black text, but website uses grey in other pages  -->
+      <div class="flex flex-col gap-4 text-grey text-lg pt-8">
+        <h3 class="text-2xl md:text-3xl font-semibold">Our Aim</h3>
+        <p>
+          To prepare youth participants for the main conference and teach them
+          the necessary advocacy skills to advocate for themselves at the
+          conference.
+        </p>
+        <p>
+          The Youth Pre-Conference will convene youth and adolescents to network
+          and gain the resources necessary for youth to continue their
+          programmatic work, advocacy, and research in both their respective
+          communities and during the AIDS 2022 conference. The Pre-Conference
+          will bring together young activists from around the world in all their
+          diversities to advance the HIV and AIDS response. It will aim to
+          centre inclusivity, justice, equity, and strengthen youth engagement
+          at AIDS 2022.
+        </p>
+        <p>
+          The Youth Pre-Conference will prepare youth for the main conference,
+          engage with young people providing them a platform to network, share
+          and learn from one another and experts in the field, and offer a place
+          for skill building including advocacy skills to facilitate advancement
+          of adolescent and youth priorities within their communities at the
+          conference.
+        </p>
+        <p>
+          One of the flagship initiatives of the Youth Pre-Conference will also
+          be to develop a Youth Position Statement, co-created with young
+          activists and youth and adolescent-led organizations with messaging on
+          meaningful youth and adolescent engagement. Are you interested in
+          co-creating the Youth Position Statement? Indicate your interest <a
+            href="https://forms.gle/zndTAwrBMaHziPiA6"
+            class="text-red underline"
+            target="_blank">here</a
+          >.
+        </p>
+        <p>
+          All registrants for AIDS 2022 are able to participate in the
+          Pre-Conference. For more information, please contact Erika (<a
+            href="mailto:edupuis@ryerson.ca"
+            class="text-red underline"
+            target="_blank">edupuis@ryerson.ca</a
+          >) or Mitchell (<a
+            href="mailto:direction@p10.qc.ca"
+            class="text-red underline"
+            target="_blank">direction@p10.qc.ca</a
+          >).
+        </p>
+      </div>
+    </article>
+  </section>
+  <!-- ! Text bleeds over on smaller screens, font is too wide -->
+  <section
+    id="youth-pavilion"
+    class="bg-merino text-grey px-5vw md:px-10vw py-10vh pb-10vw"
+  >
+    <div class="flex flex-col sm:flex-row gap-[5vw]">
+      <article class="flex flex-col gap-4 text-grey text-lg">
+        <h2 class="font-heading text-black text-6xl">Youth Pavilion</h2>
+        <div class="text-2xl font-semibold leading-8">
+          <p>
+            <time datetime="2022-07-30">July 30</time> - <time
+              datetime="2022-08-01">Aug 1, 2022</time
+            >
+          </p>
+          <p>
+            <time datetime="10:30:00">10:30AM</time> to <time
+              datetime="18:00:00">6:00PM</time
+            >
+          </p>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-semibold pt-4">
+          What is the Youth Pavilion?
+        </h3>
+        <p>
+          A space for young people to network, collaborate and showcase
+          achievements from around the world. In the Pavilion, a variety of
+          activities will be held which will include workshops, networking
+          events, performances and exhibitions.
+        </p>
+      </article>
+      <div
+        class="flex flex-col items-end gap-2 sm:gap-4 font-heading text-6xl md:text-7xl lg:text-9xl text-red"
+      >
+        <div class="flex justify-end items-end">
+          <h3 class="leading-10 md:leading-[48px] lg:leading-[85px]">
+            30.07.22
+          </h3>
+          <img
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-curl-horizontal"
+            alt="ribbon curl"
+          />
+        </div>
+        <h3>01.08.22</h3>
+      </div>
+    </div>
+  </section>
+  <section id="youth-reception" class="bg-black text-merino px-5vw py-10vw">
+    <div class="flex flex-col sm:flex-row gap-4">
+      <div class="font-heading text-6xl md:text-7xl lg:text-9xl text-red">
+        <h2>31.07.22</h2>
+      </div>
+      <article class="flex flex-col gap-4 text-merino text-lg">
+        <h2 class="font-heading text-6xl">Youth Reception🎉</h2>
+        <div class="text-2xl font-semibold leading-8">
+          <p><time datetime="2022-07-31">July 31st, 2022</time></p>
+          <p>
+            <time datetime="16:00:00">4PM</time> to <time datetime="18:00:00"
+              >6PM</time
+            >
+          </p>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-semibold pt-4">
+          What is the Youth Pavilion?
+        </h3>
+        <p>
+          This is an evening wine reception✨ to celebrate young people and give
+          them the opportunity to meet stakeholders in an informal setting.
+        </p>
+        <p>Make sure to register to attend!</p>
+        <div>
+          <Button
+            src="https://www.eventbrite.ca/e/aids-2022-youth-reception-tickets-387009775657"
+            text="Register here"
+            bgColour="bg-merino"
+            fontColour="text-black"
+          />
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>

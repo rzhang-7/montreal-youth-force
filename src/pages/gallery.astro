@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/main.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Gallery" theme="light">
+  <section class="px-5vw py-10vh">
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      <div>
+        <h1 class="font-heading text-5xl">
+          Bonjour Montréal<br /><span class="pl-12">#AIDS2022Gallery</span>
+        </h1>
+        <img
+          class="relative left-1/2 w-1/2"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-1"
+          alt="ribbon"
+        />
+      </div>
+      <div class="basis-1/2">
+        <img
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/aids2022venue"
+          alt="AIDS 2022 Venue"
+        />
+      </div>
+    </div>
+  </section>
+  <section id="horizontal">
+    <!-- https://codepen.io/sameergupta4873/pen/oNaWEpz -->
+    <!-- https://codepen.io/GreenSock/pen/jOzQqRK -->
+    <div class="pin-wrap">
+      <!-- TODO: Add images -->
+      <section>
+        <h2 class="font-heading text-4xl sm:text-6xl">
+          Youth Pre-Conference 2022
+        </h2>
+      </section>
+    </div>
+    <!-- can group images like this (figcaption optional):
+    <figure role="group">
+      <figcaption>Caption for the whole group of images</figcaption>
+
+      <figure>
+          <img src="picture1.jpg" alt="Description of picture 1">
+          <figcaption>Caption for Picture 1</figcaption>
+      </figure>
+
+      <figure>
+          <img src="picture2.jpg" alt="Description of picture 2">
+          <figcaption>Caption for Picture 2</figcaption>
+      </figure>
+
+    </figure>
+     -->
+  </section>
+  <section class="px-5vw py-5vh">
+    <div class="flex flex-col gap-8 items-center text-center">
+      <h2 class="text-4xl font-bold">
+        A huge thank you to everyone who attended in-person or virtually, for
+        coming out to celebrate youth HIV advocacy! 🎉
+      </h2>
+      <p class="text-2xl font-semibold font-subheading">
+        Thank you to our sponsors Hivos, ViiV Healthcare, and LetsStopAIDS, who
+        made this happen. <br />
+         We hope you enjoy our conference video!
+      </p>
+      <div class="w-1/3">
+        <figure>
+          <iframe
+            class="w-full aspect-video border-none"
+            src="https://www.youtube.com/embed/yaRPXtXBG7c?si=Cv0JAGSUtTu9vsrQ"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+          <figcaption class="text-right">
+            <p class="text-base">AIDS 2022 Conference</p>
+            <p class="text-sm text-gray-600"><em>Video by LetsStopAIDS</em></p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="text-4xl text-red font-heading">
+        #AIDS2022&nbsp;&nbsp;&nbsp;#MontrealYouthForce
+      </p>
+      <div class="py-10vh px-5vw w-full">
+        <Button
+          text="View & Download All Photos Here"
+          src="https://drive.google.com/drive/folders/10-G3jnQlbx7amRYXKyroNpjwN6YPJDbm"
+          bgColour="bg-red"
+          hoverBgColour="bg-black"
+          display="block"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+</script>

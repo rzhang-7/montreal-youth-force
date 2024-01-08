@@ -1,0 +1,146 @@
+---
+interface Props {
+  title: string;
+  theme: string;
+}
+
+type Styles = {
+  bgColour: string;
+  fontColour: string;
+  src: string;
+};
+
+type Theme = {
+  [key: string]: Styles;
+};
+
+const headThemes: Theme = {
+  light: {
+    bgColour: "bg-merino",
+    fontColour: "black",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-black",
+  },
+  dark: {
+    bgColour: "bg-black",
+    fontColour: "merino",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-white",
+  },
+};
+
+const navItems = [
+  {
+    path: "/",
+    label: "Home",
+    title: "Montreal Youth Force 2022",
+  },
+  {
+    path: "/about",
+    label: "Activities",
+    title: "About",
+  },
+  {
+    path: "/team",
+    label: "Team",
+    title: "Team",
+  },
+  {
+    path: "/gallery",
+    label: "Gallery",
+    title: "Gallery",
+  },
+  {
+    path: "/youth-declaration",
+    label: "Youth Declaration",
+    title: "Youth Declaration",
+  },
+];
+
+const { title, theme } = Astro.props;
+---
+
+<header class={headThemes[theme].bgColour}>
+  <nav class={`flex flex-wrap justify-between items-center pt-5vh lg:static`}>
+    <div class="pl-2.5 sm:pl-10vw">
+      <a href="/">
+        <img
+          src={headThemes[theme].src}
+          alt="Montreal Youth Force 2022"
+          width="196px"
+        />
+      </a>
+    </div>
+    <ul
+      class={`${headThemes[theme].bgColour} z-10 absolute top-[12%] flex flex-col order-last basis-full w-full lg:static lg:w-auto lg:pr-10vw lg:basis-auto lg:flex-row lg:justify-center lg:items-center`}
+    >
+      {
+        navItems.map((item) => (
+          // transition taken from https://codepen.io/maheshambure21/pen/QwXaRw?editors=1100
+          <li
+            class={`px-5 h-0 transition-[height] duration-[400ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] overflow-hidden w-full lg:p-5 lg:w-auto lg:h-auto text-lg text-${headThemes[theme].fontColour} font-subheading`}
+          >
+            <a
+              class={`w-full block lg:inline lg:w-auto transition-all duration-300 before:transition-all before:duration-300 after:transition-all after:duration-300 relative after:absolute after:w-[0%] after:content-[''] after:text-transparent after:bg-red after:h-px after:m-auto after:inset-x-0 after:bottom-0 hover:after:w-full motion-reduce:after:transition-none motion-reduce:hover:underline motion-reduce:underline-offset-4 motion-reduce:decoration-red ${
+                item.title === title ? "opacity-60" : "opacity-100"
+              }`}
+              href={item.path}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="block lg:hidden pr-5 sm:pr-10vw">
+      <button id="hamburger" type="button" aria-label="Menu">
+        <span
+          class={`block w-4 h-0.5 mx-auto transition-all duration-300 rounded-sm bg-${headThemes[theme].fontColour}`}
+        ></span>
+        <span
+          class={`block w-4 h-0.5 mx-auto my-0.5 transition-all duration-300 rounded-sm bg-${headThemes[theme].fontColour} opacity-100`}
+        ></span>
+        <span
+          class={`block w-4 h-0.5 mx-auto transition-all duration-300 rounded-sm bg-${headThemes[theme].fontColour}`}
+        ></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  let isOpen = false;
+  const hamButton = document.querySelector("#hamburger");
+  const hamIcon = document.querySelectorAll("#hamburger > span");
+  const navContainer = document.querySelector("nav > ul") as HTMLUListElement;
+  const navItems = navContainer.querySelectorAll("li");
+
+  // https://stackoverflow.com/a/57127781
+  const toggleCSSclasses = (el: Element, ...cls: string[]) =>
+    cls.map((cl) => el.classList.toggle(cl));
+
+  function toggleHamburgerMenu() {
+    isOpen = !isOpen;
+    // Icon change transition
+    toggleCSSclasses(hamIcon[0], "rotate-45", "translate-y-1");
+    toggleCSSclasses(hamIcon[1], "opacity-0", "opacity-100");
+    toggleCSSclasses(hamIcon[2], "-rotate-45", "-translate-y-1");
+
+    // Nav dropdown transition
+    toggleCSSclasses(navContainer, "p-0", "p-5");
+    navItems.forEach((item) => {
+      toggleCSSclasses(item, "h-0", "h-14");
+    });
+    toggleCSSclasses(
+      navItems[navItems.length - 1],
+      "shadow-[0_9px_12px_rgba(0,0,0,0.13)]"
+    );
+  }
+
+  hamButton?.addEventListener("click", toggleHamburgerMenu);
+
+  window.addEventListener("resize", () => {
+    // Reset dropdown styles if screen is resized back to normal
+    if (window.innerWidth > 991 && isOpen) {
+      toggleHamburgerMenu();
+    }
+  });
+</script>

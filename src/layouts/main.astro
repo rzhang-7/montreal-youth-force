@@ -1,0 +1,69 @@
+---
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
+interface Props {
+  title: string;
+  theme: string;
+}
+
+const { title, theme } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Archivo+Narrow:regular,600,700,italic%7CArchivo:200,300,regular,600,800"
+      media="all"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header title={title} theme={theme}/>
+    <main class="bg-merino text-grey font-body">
+      <slot />
+    </main>
+
+    <Footer/>
+  </body>
+</html>
+
+<script>
+  import LocomotiveScroll from "locomotive-scroll";
+
+  const locomotiveScroll = new LocomotiveScroll();
+</script>
+
+<style is:global>
+  @font-face {
+    font-family: "Almarai";
+    src: url("/fonts/Almarai.woff") format("woff");
+    font-display: swap;
+  }
+
+  html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>

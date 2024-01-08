@@ -1,0 +1,27 @@
+---
+import type { SocialLink } from "./Footer.astro";
+
+interface Props {
+  links: SocialLink[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul class="flex flex-wrap">
+  {
+    links.map((link) => (
+      <li class="p-4">
+        <a href={link.href} target="_blank">
+          <span class="sr-only">{link.text}</span>
+          <img
+            src={link.src}
+            alt={link.platform}
+            class="max-w-full max-h-full h-8"
+            aria-hidden="true"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
