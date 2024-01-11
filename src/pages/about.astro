@@ -2,8 +2,6 @@
 import Layout from "../layouts/main.astro";
 import Button from "../components/Button.astro";
 
-// ? There are asterisks under some timeslots but idk what they mean
-// The whole table has contrast issues??
 type Row = {
   time: string;
   activity: string;
@@ -182,7 +180,7 @@ const schedule: Table[] = [
         <h1 class="font-heading text-5xl sm:text-7xl text-center">Hosted by</h1>
         <img
           class="w-36 sm:w-60"
-          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/letsstopaids"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/logo/letsstopaids"
           alt="LetsStopAIDS"
         />
       </div>
@@ -229,6 +227,7 @@ const schedule: Table[] = [
   </section>
   <section id="schedule" class="bg-merino text-red px-5vw py-10vh">
     <div class="flex flex-col gap-4 md:flex-row pb-5vh">
+      <!-- TODO: Make all tables same height -->
       {
         schedule.map((item) => (
           <div class="flex flex-col gap-4 w-full">
@@ -237,15 +236,18 @@ const schedule: Table[] = [
             </h2>
             <table>
               <tbody class="text-merino grid auto-rows-fr">
-                {item.rows.map((row) => (
-                  <tr class={`bg-[${row.colour}] flex`}>
-                    <td class="basis-[45%] p-2.5 text-sm">{row.time}</td>
-                    <td class="basis-[55%] p-2.5">
-                      <p class="text-lg leading-5">{row.activity}</p>
-                      <p class="text-xs">{row.description}</p>
-                    </td>
-                  </tr>
-                ))}
+                {item.rows.map((row) => {
+                  const rowStyle = `${row.colour === "#ce2c23" ? "bg-[#ab231c]" : "bg-red" } flex`;
+                  return (
+                    <tr class={rowStyle}>
+                      <td class="basis-[45%] p-2.5 text-sm">{row.time}</td>
+                      <td class="basis-[55%] p-2.5">
+                        <p class="text-lg leading-5">{row.activity}</p>
+                        <p class="text-xs">{row.description}</p>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -254,8 +256,9 @@ const schedule: Table[] = [
     </div>
     <Button
       src="https://uploads-ssl.webflow.com/62b21b4144a242c86743072f/62e4a0da16c2b17f6f0570fa_MYF%20Schedule%20(1).pdf"
-      text="Schedule (PDF)"
-    />
+    >
+      Schedule (PDF)
+    </Button>
   </section>
   <section
     id="pre-conference"
@@ -414,10 +417,11 @@ const schedule: Table[] = [
         <div>
           <Button
             src="https://www.eventbrite.ca/e/aids-2022-youth-reception-tickets-387009775657"
-            text="Register here"
             bgColour="bg-merino"
             fontColour="text-black"
-          />
+          >
+            Register here
+          </Button>
         </div>
       </article>
     </div>

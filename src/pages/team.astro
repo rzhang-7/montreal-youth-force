@@ -1,8 +1,157 @@
 ---
 import Layout from "../layouts/main.astro";
+import Carousel from "../components/Carousel.astro"
+import TeamGroup from "../components/TeamGroup.astro";
+import type { Image } from "../components/Initiative.astro";
+
+export type Card = {
+  img: Image;
+  name: string;
+  title: string;
+  bio: string;
+};
+
+type Team = {
+  name: string;
+  cards: Card[];
+};
+
+const teams: Team[] = [
+  {
+    name: "Pre-Conference Team",
+    cards: [
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/erika-dupuis",
+          alt: "Picture of Erika Dupuis",
+        },
+        name: "Erika Dupuis",
+        title: "Local Co-Chair",
+        bio: "Erika Dupuis (she/they) is a Social Worker and youth engagement organizer based on the unceded and traditional lands of the Mississaugas of Scugog Island, currently known as the greater Toronto area. Primarily working in global health advocacy, Erika organizes within the intersections of gender equality, drug policy, and sexual and reproductive health, rights, and justice. Erika currently works with UN Women and Harm Reduction International. In addition, Erika is the Country Coordinator for the Canadian Chapter of the International Youth Alliance for Family Planning and sits as Vice-Chair of The PACT and PMNCH’s NGO Constituency.",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/mitchell-rae",
+          alt: "Picture of Mitchell Rae",
+        },
+        name: "Mitchell Rae",
+        title: "Local Co-Chair",
+        bio: "Mitchell Rae (masculine pronouns) works as the Executive Director of Project 10, a nonprofit community organization dedicated to supporting the well-being of 2SLGBTQIA+ youth between the ages of 14 and 25 in the Greater Montreal Area. Mitchell is also a graduate student focusing on the way that white racial identity operates to the detriment of people of colour. In his spare time, Mitchell co-founded ChamPaint Montreal which hosts art events for young Black, Indigenous, and people of colour to share stories in relation to their lived experiences as racialized people.",
+      }
+    ]
+  },
+  {
+    name: "Communications & Advocacy Team",
+    cards: [
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/mickey-andeweg",
+          alt: "Picture of Mickey Andeweg",
+        },
+        name: "Mickey Andeweg",
+        title: "International Co-Chair",
+        // FIXME: Link does not work
+        bio: "Mickey Andeweg (1991) is a global advocacy officer at <a href='https://hivos.org' target='_blank'>Hivos</a>, working to strengthen the position of youth and LGBTIQ+ people worldwide. Starting at the age of 16, Mickey has been involved in influencing policies to protect human rights and achieve gender equality. Working with leaders from four continents, Mickey facilitates dialogues between policy makers and activists. Previous experiences include working for CHOICE for Youth and Sexuality, Aidsfonds and the Youth Coalition for Sexual and Reproductive Rights.",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/asha-ulusow",
+          alt: "Picture of Asha Ulusow",
+        },
+        name: "Asha Ulusow",
+        title: "Local Co-Chair",
+        bio: "Asha Ulusow works at St. Stephen's Community House (TNG), Black Coalition for AIDS Prevention (Blackcap) and LetsStopAIDS. She is a Child and youth care practitioner. Asha is working towards fostering youth involvement and innovation in key issues that affect their lives. She is dedicated to elevating the experiences and expertise of BIPOC (Black, Indigenous, and people of colour) young people, especially young people who are living with HIV in Canada. Asha has spent most of her career talking to and encouraging conversations about taboo topics in her community such as mental health, addiction and sexually transmitted and blood-borne infections (STBBIs) mainly HIV/AIDS in hopes of lessening the stigma surrounding them.",
+      },
+    ]
+  },
+  {
+    name: "Global Village & Youth Pavilion",
+    cards: [
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/maxwell-changombe",
+          alt: "Picture of Maxwell Changombe",
+        },
+        name: "Maxwell Changombe",
+        title: "International Co-Chair",
+        bio: "Maxwell Changombe is the Programs Coordinator with Restless Development Zimbabwe Hub. His focus is on creating a global community of activists committed to ending AIDS by 2030 through collaboration, conversation, awareness, youth engagement, public support and campaigning together on AIDS issues that young people care about, including testing and prevention education, more funding for HIV response, and an end to all forms of discrimination. Maxwell is working with Youth Ambassadors from 15 countries across the world who are committed to ending AIDS by 2030 promoting their leadership in HIV response and providing opportunities to strengthen their skills as a new generation of advocates. He also worked on different projects including #GenEndIt, Peak Youth Tackling HIV, and International Citizen Service. Maxwell trusts #YouthPower and believes that enhancing their leadership skills will be the game-changer in ending AIDS by 2030 as a global epidemic.",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/kaweme-chunga",
+          alt: "Picture of Kaweme Chunga",
+        },
+        name: "Kaweme Chunga",
+        title: "International Co-Chair",
+        bio: "Kaweme Chunga is a current Vice Chair on the Y+ Global board & a Law Graduate from the UK. Some of her experiences include educating people in schools on the risk of hiv to help reduce stigma; as well as strongly advocating and promoting the ethical & meaningful engagement of young people, their rights, dignity & wellbeing in policy and decision-making spaces. In her spare time, Kaweme is a Transformational Youth Coach and Mentor, founder of Anchor of Destiny where they believe if you mentor the youth, you mentor the land. ",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/asif-umair",
+          alt: "Picture of Asif Umair",
+        },
+        name: "Asif Umair",
+        title: "Local Co-Chair",
+        bio: "Asif Umair is a social and sports activist. He is a Ph.D. scholar at UQAM Montreal Canada. He explores social and health development through sports-based interventions. He is also the founder of Kafka Welfare Organization Pakistan which has been doing advocacy on HIV/AIDS issues.",
+      },
+    ]
+  },
+  {
+    name: "Logistics & Operations Team",
+    cards: [
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/cosima-lenz",
+          alt: "Picture of Cosima Lenz",
+        },
+        name: "Cosima Lenz",
+        title: "International Co-Chair",
+        bio: "",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/stephen-brace",
+          alt: "Picture of Stephen Brace",
+        },
+        name: "Stephen Brace",
+        title: "Local Co-Chair",
+        bio: "Stephen Brace is the local co-chair for the logistics and operations working group representing AIDS Community Care Montreal (ACCM).",
+      },
+    ]
+  },
+  {
+    name: "Fundraising & Events Team",
+    cards: [
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/damilare-oyedele",
+          alt: "Picture of Damilare Oyedele",
+        },
+        name: "Damilare Oyedele",
+        title: "International Co-Chair",
+        // FIXME: Link does not work
+        bio: "Damilare is The PACT Partnership & Resources Mobilization Co-Lead where he works on partnership development to mobilize resources for the organisation. Damilare joined <a href='https://theyouthpact.org/2021/01/14/amplifying-voices-5-minutes-with-damilare-oyedele/' target='_blank'>The PACT</a> with the sole aim to contribute meaningfully and actively to advance its mission in creating spaces for young people and their networks to meet, network and chart a pathway to end AIDS by 2030. He has keen interest in equitable access to information and knowledge development. To this he works with the team to explore opportunities to strategically position the need to promote equitable access to information and knowledge about sexual and reproductive health to young people. Damilare is currently a Mastercard Foundation Scholar, studying Global Challenges at the African Leadership University, Kigali Rwanda.",
+      },
+      {
+        img: {
+          src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/yvonne-su",
+          alt: "Picture of Dr. Yvonne Su",
+        },
+        name: "Dr. Yvonne Su",
+        title: "Local Co-Chair",
+        bio: "Dr. Yvonne Su is the Local Co-Chair on the Fundraising, Events and Sponsorship Working Group of the YouthForce for LetsStopAIDS. Dr. Su is also an Assistant Professor in the Department of Equity Studies at York University. Dr. Su is an expert on international development and have studied force migration and queer migration in many regions of the Global South. She holds a PhD in Political Science and International Development from the University of Guelph and a Masters in Refugee and Forced Migration Studies from the University of Oxford. She is a faculty fellow at the Dahdaleh Institute for Global Health Research.",
+      },
+    ]
+  },
+]
 ---
 
 <Layout title="Team" theme="dark">
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+  />
   <section
     class="bg-black text-merino px-5 pt-10vh pb-[20vh] sm:px-5vh md:px-10vh"
   >
@@ -19,10 +168,18 @@ import Layout from "../layouts/main.astro";
       </p>
     </div>
   </section>
-  <section class="bg-black text-merino px-5vw py-10vh">
-    <h2 class="font-heading text-4xl sm:text-6xl">Leadership Team</h2>
-    <!-- splide -->
+  <section
+    class="bg-black text-merino px-5vw py-10vh"
+  >
+    <h2 class="font-heading pb-10vh text-4xl sm:text-6xl">Leadership Team</h2>
+    <Carousel/>
   </section>
-
-
+  <section class="bg-merino py-10vh">
+    <h2 class="text-center font-heading text-5xl sm:text-7xl">Youth Force Working Groups</h2>
+    {
+      teams.map((item) => (
+        <TeamGroup team={item}/>
+      ))
+    }
+  </section>
 </Layout>

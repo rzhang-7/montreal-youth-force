@@ -1,0 +1,46 @@
+---
+const { person } = Astro.props;
+---
+
+<div class="card flex-1">
+  <img class="w-full" src={person.img.src} alt={person.img.alt} />
+  <!-- https://letsstopaids.org/about#leadership -->
+  <h3 class="text-3xl font-subheading font-semibold py-2.5">{person.name}</h3>
+  <h4 class="text-lg font-subheading pb-6">{person.title}</h4>
+  <div class="text-center">
+    <button
+      class="read-more border-2 border-current w-full py-4 hover:bg-merino hover:text-black"
+    >
+      Read More
+    </button>
+  </div>
+  <!-- TODO: Overlay -->
+  <div
+    class="overlay hidden fixed left-0 top-0 z-10 w-screen h-screen bg-black/80"
+  >
+    <div class="bg-merino text-black m-auto p-8">
+      <h3 class="text-3xl font-subheading">{person.name}</h3>
+      <h4 class="text-lg font-subheading py-2.5">{person.title}</h4>
+      <p class="text-base font-base">{person.bio}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { toggleCSSClasses } from "../scripts/script.ts";
+
+  const cards = document.querySelectorAll("div.card");
+
+  cards.forEach((card) => {
+    const readMoreButton = card.querySelector(
+      "button.read-more"
+    ) as HTMLButtonElement;
+    const overlay = card.querySelector("div.overlay") as HTMLDivElement;
+    if (readMoreButton) {
+      readMoreButton.addEventListener("click", () => {
+        toggleCSSClasses(overlay, "hidden");
+        console.log("click");
+      });
+    }
+  });
+</script>

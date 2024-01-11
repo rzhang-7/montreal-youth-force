@@ -1,75 +1,73 @@
 ---
-import SocialLinks from './SocialLinks.astro'
+import SocialLinks from "./SocialLinks.astro";
 
 export type SocialLink = {
-	platform: string
-	href: string
-	text: string
-	src: string
-}
+  platform: string;
+  href: string;
+  text: string;
+  src: string;
+};
 
 const myfSocial: SocialLink[] = [
   {
     platform: "facebook",
     href: "https://www.facebook.com/aidsyouthforces",
     text: "Connect with Montreal Youth Force on Facebook",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/facebook"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/facebook",
   },
   {
     platform: "instagram",
     href: "https://www.instagram.com/aidsyouthforces",
     text: "Follow Montreal Youth Force on Instagram",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/instagram"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/instagram",
   },
   {
     platform: "twitterx",
     href: "https://www.twitter.com/aidsyouthforces",
     text: "Follow Montreal Youth Force on Twitter",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/twitterx"
-  }
-]
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/twitterx",
+  },
+];
 
 const lsaSocial: SocialLink[] = [
   {
     platform: "facebook",
     href: "https://www.facebook.com/LetsStopAIDS",
     text: "Connect with LetsStopAIDS on Facebook",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/facebook"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/facebook",
   },
   {
     platform: "instagram",
     href: "https://www.instagram.com/LetsStopAIDS",
     text: "Follow LetsStopAIDS on Instagram",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/instagram"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/instagram",
   },
   {
     platform: "twitterx",
     href: "https://www.twitter.com/LetsStopAIDS",
     text: "Follow LetsStopAIDS on Twitter",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/twitterx"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/twitterx",
   },
   {
     platform: "tiktok",
     href: "https://www.tiktok.com/@letsstopaids",
     text: "Follow LetsStopAIDS on TikTok",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/tiktok"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/tiktok",
   },
   {
     platform: "youtube",
     href: "https://www.youtube.com/channel/UCTkxmYJZ-IgIosZhlguNtFg",
     text: "Watch LetsStopAIDS on Youtube",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/youtube"
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/youtube",
   },
-
-]
-
+];
 ---
 
-<footer class="bg-black text-merino p-5vw sm:px-10vw">
+<footer class="bg-black text-merino p-5vw pt-10vh sm:px-10vw">
   <div class="flex justify-center">
     <img
       class="w-[200px] sm:w-[250px]"
-      src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/rbd0gaxb7qkpsd2kosfv"
+      src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/letsstopaids-x-myf2022"
       alt="LetsStopAIDS x Montreal Youth Force 2022"
     />
   </div>
@@ -81,11 +79,11 @@ const lsaSocial: SocialLink[] = [
       <a href="/">
         <img
           class="pl-4"
-          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-white"
+          src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/logo/myf2022-white"
           alt="Montreal Youth Force 2022"
         />
       </a>
-      <SocialLinks links={myfSocial}/>
+      <SocialLinks links={myfSocial} />
       <p
         class="font-subheading float-right sm:float-none text-base text-merino/75 pl-4"
       >
@@ -96,7 +94,7 @@ const lsaSocial: SocialLink[] = [
     <div class="block bg-red h-1 rounded-3xl sm:hidden"></div>
     <div class="hidden sm:flex sm:justify-center sm:shrink">
       <img
-        src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/k9t60djip6byiel36g7j"
+        src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/red-line"
         alt="Red Line"
       />
     </div>
@@ -106,14 +104,14 @@ const lsaSocial: SocialLink[] = [
         <a href="https://letsstopaids.org/" target="_blank">
           <img
             class="pl-4"
-            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/letsstopaids"
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/logo/letsstopaids"
             alt="LetsStopAIDS"
           />
         </a>
-        <SocialLinks links={lsaSocial}/>
+        <SocialLinks links={lsaSocial} />
         <div class="flex items-center gap-4 pl-4 py-0">
           <img
-            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/p15cgdhlryaryraslwlz"
+            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/footer/location-indicator"
             alt="Location Indicator"
             loading="lazy"
           />

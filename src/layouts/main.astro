@@ -24,6 +24,7 @@ const { title, theme } = Astro.props;
       href="https://fonts.googleapis.com/css?family=Archivo+Narrow:regular,600,700,italic%7CArchivo:200,300,regular,600,800"
       media="all"
     />
+    <slot name="head"/>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>

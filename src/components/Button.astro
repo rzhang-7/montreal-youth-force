@@ -1,6 +1,5 @@
 ---
 interface Props {
-  text: string;
   src: string;
   bgColour?: string;
   fontColour?: string;
@@ -8,13 +7,16 @@ interface Props {
   display?: string;
 }
 
-const { text, src, bgColour="bg-black", fontColour="text-merino", hoverBgColour="bg-red", display="inline-block"} = Astro.props;
----
+const { src, bgColour="bg-black", fontColour="text-merino", hoverBgColour="bg-red", display="inline-block"} = Astro.props;
 
+const renamedHoverBgColour = `hover:${hoverBgColour}`;
+---
+<!-- ! Colours aren't rendered -->
+<!-- https://tailwindcss.com/docs/content-configuration#dynamic-class-names -->
 <a
   href={src}
   target="_blank"
-  class={`${bgColour} ${fontColour} ${display} hover:${hoverBgColour} hover:text-merino font-heading text-base sm:text-2xl text-center py-3 px-3 sm:px-10 sm:py-4 lg:px-20`}
+  class={`${bgColour} ${fontColour} ${display} ${renamedHoverBgColour} hover:text-merino font-heading text-base sm:text-2xl text-center py-3 px-3 sm:px-10 sm:py-4 lg:px-20`}
 >
-  {text}
+  <slot/>
 </a>

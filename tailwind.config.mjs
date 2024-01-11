@@ -9,7 +9,6 @@ export default {
         lg: "991px",
       },
       colors: {
-        black: "#000000",
         grey: "#333333",
         merino: "#faf7f0",
         red: "#e1000e",

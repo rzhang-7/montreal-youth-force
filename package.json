@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.3.1",
     "@astrojs/tailwind": "^5.0.3",
+    "@splidejs/splide": "^4.1.4",
     "astro": "^4.0.4",
     "gsap": "^3.12.4",
     "locomotive-scroll": "^5.0.0-beta.11",

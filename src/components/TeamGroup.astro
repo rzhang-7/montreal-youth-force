@@ -1,0 +1,17 @@
+---
+import BioCard from "./BioCard.astro";
+import type { Card } from "../pages/team.astro";
+
+const { team } = Astro.props;
+---
+
+<section class="px-4 sm:px-5vw lg:px-10vw">
+  <h3 class="font-heading text-4xl sm:text-6xl pt-10vh pb-5vh">{team.name}</h3>
+  <div class="flex flex-col sm:flex-row gap-12">
+    {
+      team.cards.map((card: Card) => (
+        <BioCard person={card}/>
+      ))
+    }
+  </div>
+</section>

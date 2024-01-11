@@ -18,12 +18,12 @@ const headThemes: Theme = {
   light: {
     bgColour: "bg-merino",
     fontColour: "black",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-black",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/logo/myf2022-black",
   },
   dark: {
     bgColour: "bg-black",
     fontColour: "merino",
-    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/myf2022-white",
+    src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/logo/myf2022-white",
   },
 };
 
@@ -107,29 +107,27 @@ const { title, theme } = Astro.props;
 </header>
 
 <script>
+  import { toggleCSSClasses } from "../scripts/script.ts"
+
   let isOpen = false;
   const hamButton = document.querySelector("#hamburger");
   const hamIcon = document.querySelectorAll("#hamburger > span");
   const navContainer = document.querySelector("nav > ul") as HTMLUListElement;
   const navItems = navContainer.querySelectorAll("li");
 
-  // https://stackoverflow.com/a/57127781
-  const toggleCSSclasses = (el: Element, ...cls: string[]) =>
-    cls.map((cl) => el.classList.toggle(cl));
-
   function toggleHamburgerMenu() {
     isOpen = !isOpen;
     // Icon change transition
-    toggleCSSclasses(hamIcon[0], "rotate-45", "translate-y-1");
-    toggleCSSclasses(hamIcon[1], "opacity-0", "opacity-100");
-    toggleCSSclasses(hamIcon[2], "-rotate-45", "-translate-y-1");
+    toggleCSSClasses(hamIcon[0], "rotate-45", "translate-y-1");
+    toggleCSSClasses(hamIcon[1], "opacity-0", "opacity-100");
+    toggleCSSClasses(hamIcon[2], "-rotate-45", "-translate-y-1");
 
     // Nav dropdown transition
-    toggleCSSclasses(navContainer, "p-0", "p-5");
+    toggleCSSClasses(navContainer, "p-0", "p-5");
     navItems.forEach((item) => {
-      toggleCSSclasses(item, "h-0", "h-14");
+      toggleCSSClasses(item, "h-0", "h-14");
     });
-    toggleCSSclasses(
+    toggleCSSClasses(
       navItems[navItems.length - 1],
       "shadow-[0_9px_12px_rgba(0,0,0,0.13)]"
     );

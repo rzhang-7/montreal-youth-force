@@ -1,0 +1,70 @@
+---
+import BioCard from "./BioCard.astro";
+
+const carousel = [
+  {
+    img: {
+      src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/shamin-mohamed-jr",
+      alt: "Picture of Shamin Mohamed Jr",
+    },
+    name: "Shamin Mohamed Jr",
+    title: "CEO & Founder at LetsStopAIDS",
+    bio: "Shamin Mohamed Jr. is the Founder and President of LetsStopAIDS, Canada’s largest Youth-HIV charity. His activism over the last 18 years saw him recognised at the age of 15 as Canada’s ‘Top 20 under 20’. His response to the global Youth-HIV epidemic has made positive impacts on over 72 countries. As one of the founding members of DECIEM, a multinational skincare company, Shamin possesses a unique perspective on organizational leadership. He has been an invited guest to several UN events, most recently the International AIDS Conference. He continues to use his voice to speak out for global Youth-HIV issues.",
+  },
+  {
+    img: {
+      src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/tatiana-goulart",
+      alt: "Picture of Tatiana Goulart",
+    },
+    name: "Tatiana Goulart",
+    title: "National Manager at LetsStopAIDS",
+    bio: "Tatiana, PMP, MBA, began her career with Fundação Dom Cabral, a Business School in Brazil, gaining unparalleled experience in the education space, while also establishing herself as a respected Project Director. Currently working as a National Manager for LetsStopAIDS, where she started as a volunteer Program Manager, Tatiana is in charge of leading the Montreal YouthForce initiative alongside with the LetsStopAIDS' team and she is responsible for all National Programs. Her desire to contribute and work within the HIV and AIDS field came from a need to spread information after some relatives became HIV positive. Passionate about people, mentorship and leadership, through LetsStopAIDS' projects she looks to promote change and knowledge exchange among youth. While her professional and personal projects have taken her to Canada, Tatiana is proud to call Toronto home.",
+  },
+  {
+    img: {
+      src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/rhian-wolstenholme",
+      alt: "Picture of Rhian Wolstenholme",
+    },
+    name: "Rhian Wolstenholme",
+    title: "Sr. Project Coordinate at LetsStopAIDS",
+    bio: "Rhian is Project Coordinator at LetsStopAIDS and is currently coordinating the Montreal Youth Force as well as other LetsStopAIDS projects including NoTimeToWait, a Youth-HIV Leadership Conference. Her projects focus on raising awareness about HIV amongst youth, helping young people develop advocacy and leadership skills, and inspiring them to take action and make positive change in their local communities. As a former language teacher, Rhian has worked with youth in university and school settings, and she has also volunteered and worked in non-profit organizations particularly in environment and health related fields. She is committed to helping make this world a more sustainable, safe, and inclusive place for current and future generations.",
+  },
+  {
+    img: {
+      src: "https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/team/ogonna-ojiaka",
+      alt: "Picture of Ogonna Ojiaka",
+    },
+    name: "Ogonna Ojiaka",
+    title: "Jr. Project Coordinate at LetsStopAIDS",
+    bio: "Ogonna works at LetsStopAIDS where she coordinates the activities of the Montreal Youth Force. She is a Nigeria-trained medical doctor and has been involved in managing HIV and AIDS cases, providing medical care among resource-depleted communities, organizing outreach programs, and creating digital tools that improve access to health services. She has a keen interest in developing public health projects that address the needs of underserved populations.",
+  },
+];
+---
+
+<section class="splide" aria-label="Leadership Team Carousel">
+  <div class="splide__track">
+    <ul class="splide__list flex gap-8">
+      {
+        carousel.map((item) => (
+          <li class="splide__slide">
+            <BioCard person={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+<script>
+  import Splide from "@splidejs/splide";
+
+  new Splide(".splide", {
+    classes: {
+      arrow: "splide__arrow bg-merino",
+    },
+    padding: "3rem",
+    pagination: false,
+    perPage: 3,
+    perMove: 1,
+    type: "loop",
+  }).mount();
+</script>
