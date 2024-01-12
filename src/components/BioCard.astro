@@ -1,5 +1,5 @@
 ---
-const { person } = Astro.props;
+const { bgColour, person } = Astro.props;
 ---
 
 <div class="card flex-1">
@@ -9,19 +9,35 @@ const { person } = Astro.props;
   <h4 class="text-lg font-subheading pb-6">{person.title}</h4>
   <div class="text-center">
     <button
-      class="read-more border-2 border-current w-full py-4 hover:bg-merino hover:text-black"
+      class={`read-more border-2 border-current w-full py-4 ${
+        bgColour === "black"
+          ? "hover:bg-merino hover:text-black"
+          : "hover:bg-black hover:text-merino"
+      }`}
     >
       Read More
     </button>
   </div>
-  <!-- TODO: Overlay -->
+  <!-- FIXME: Does not work on carousel, need to add mobile styles -->
   <div
     class="overlay hidden fixed left-0 top-0 z-10 w-screen h-screen bg-black/80"
   >
-    <div class="bg-merino text-black m-auto p-8">
-      <h3 class="text-3xl font-subheading">{person.name}</h3>
-      <h4 class="text-lg font-subheading py-2.5">{person.title}</h4>
-      <p class="text-base font-base">{person.bio}</p>
+    <div class="mx-[10vw] bg-merino text-grey flex gap-8 m-auto p-8">
+      <div class="flex-1"><img class="w-full" src={person.img.src} alt={person.img.alt} /></div>
+      <article class="flex-1">
+        <div class="flex justify-end p-4">
+          <button class="close" type="button" aria-label="Close Bio">
+            <span
+              class="block w-4 h-0.5 mx-auto rounded-sm bg-black translate-y-0.5 -rotate-45"
+            ></span>
+            <span class="block w-4 h-0.5 mx-auto rounded-sm bg-black rotate-45"
+            ></span>
+          </button>
+        </div>
+        <h3 class="text-3xl font-subheading">{person.name}</h3>
+        <h4 class="text-lg font-subheading py-2.5">{person.title}</h4>
+        <p class="text-base font-base">{person.bio}</p>
+      </article>
     </div>
   </div>
 </div>
@@ -36,10 +52,13 @@ const { person } = Astro.props;
       "button.read-more"
     ) as HTMLButtonElement;
     const overlay = card.querySelector("div.overlay") as HTMLDivElement;
+    const closeButton = card.querySelector(".close") as HTMLButtonElement;
     if (readMoreButton) {
       readMoreButton.addEventListener("click", () => {
-        toggleCSSClasses(overlay, "hidden");
-        console.log("click");
+        toggleCSSClasses(overlay, "hidden", "flex");
+      });
+      closeButton.addEventListener("click", () => {
+        toggleCSSClasses(overlay, "hidden", "flex");
       });
     }
   });
