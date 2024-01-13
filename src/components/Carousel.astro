@@ -44,10 +44,11 @@ const carousel = [
 <section class="splide" aria-label="Leadership Team Carousel">
   <div class="splide__track">
     <ul class="splide__list flex gap-8">
+      <!-- FIXME: Does not display bio properly -->
       {
         carousel.map((item) => (
           <li class="splide__slide">
-            <BioCard person={item} />
+            <BioCard bgColour="black" person={item} />
           </li>
         ))
       }
@@ -58,6 +59,16 @@ const carousel = [
   import Splide from "@splidejs/splide";
 
   new Splide(".splide", {
+    breakpoints: {
+      479: {
+        padding: "1rem",
+        perPage: 1,
+      },
+      767: {
+        padding: "2rem",
+        perPage: 2,
+      }
+    },
     classes: {
       arrow: "splide__arrow bg-merino",
     },
