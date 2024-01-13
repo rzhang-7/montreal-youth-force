@@ -6,7 +6,7 @@ type Row = {
   time: string;
   activity: string;
   description?: string;
-  colour: string;
+  colour?: string;
 };
 
 type Table = {
@@ -49,41 +49,41 @@ const schedule: Table[] = [
       {
         time: "10:30 - 11:30",
         activity: "Youth Pavilion - Games & Activities",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "11:30 - 12:30",
         activity: "Global Village Ceremony",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "12:30 - 13:30",
         activity: "Dialogue with High-Level Stakeholders",
         description: "Youth Recommendations",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "13:30 - 14:30",
         activity: "How to use Media for Advocacy",
         description: "Youth Recommendations",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "14:30 - 15:30",
         activity: "Youth Advocacy March",
-        colour: "#ce2c23",
+        colour: "",
       },
 
       {
         time: "15:30 - 16:30",
         activity: "Networking Session",
         description: "Speed Networking Session, Refreshments Provided",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "16:30 - 18:00",
         activity: "Youth Pavilion - Games & Activities",
-        colour: "#ce2c23",
+        colour: "",
       },
     ],
   },
@@ -93,36 +93,36 @@ const schedule: Table[] = [
       {
         time: "10:30 - 11:30",
         activity: "Youth Pavilion - Games & Activities",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "11:30 - 12:30",
         activity: "Networking Session",
         description:
           "Keeping up the Momentum Post-Conference, Refreshments Provided",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "12:30 - 13:30",
         activity: "Youth Leaders Panel Session",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "13:30 - 14:30",
         activity: "Sports & HIV",
         description: "Using Sports to Boost Impact of Advocacy Campaigns",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "14:30 - 15:30",
         activity: "Break",
-        colour: "#ce2c23",
+        colour: "",
       },
       // 30 minutes of nothing??
       {
         time: "16:00 - 18:00",
         activity: "Youth Reception ✨",
-        colour: "#ce2c23",
+        colour: "dark",
       },
     ],
   },
@@ -132,41 +132,41 @@ const schedule: Table[] = [
       {
         time: "10:30 - 11:30",
         activity: "Youth Pavilion - Games & Activities",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "11:30 - 12:30",
         activity: "Networking Session",
         description: "Treasure-Hunt Networking, Refreshments Provided",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "12:30 - 13:30",
         activity: "Youth Lead Organization Showcase",
-        colour: "#ce2c23",
+        colour: "",
       },
       {
         time: "13:30 - 14:30",
         activity: "Open-Mic, Poetry Slam, Storytelling & Music",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "14:30 - 15:30",
         activity: "Next Steps",
         description: "Keeping up the Momentum Post-Conference",
-        colour: "#ce2c23",
+        colour: "",
       },
 
       {
         time: "15:30 - 16:30",
         activity: "Networking Session",
         description: "Refreshments Provided",
-        colour: "#ce2c23",
+        colour: "dark",
       },
       {
         time: "16:30 - 18:00",
         activity: "Youth Pavilion - Games & Activities",
-        colour: "#ce2c23",
+        colour: "",
       },
     ],
   },
@@ -230,14 +230,14 @@ const schedule: Table[] = [
       <!-- TODO: Make all tables same height -->
       {
         schedule.map((item) => (
-          <div class="flex flex-col gap-4 w-full">
+          <div class="flex flex-col flex-1 gap-4 w-full">
             <h2 class="text-red font-body font-bold text-3xl text-center">
               {item.date}
             </h2>
             <table>
               <tbody class="text-merino grid auto-rows-fr">
                 {item.rows.map((row) => {
-                  const rowStyle = `${row.colour === "#ce2c23" ? "bg-[#ab231c]" : "bg-red" } flex`;
+                  const rowStyle = `${row.colour === "dark" ? "bg-[#ab231c]" : "bg-[#ce2c23]" } flex`;
                   return (
                     <tr class={rowStyle}>
                       <td class="basis-[45%] p-2.5 text-sm">{row.time}</td>
@@ -265,24 +265,11 @@ const schedule: Table[] = [
     class="bg-merino text-grey px-5vw md:px-10vw py-10vh"
   >
     <article>
-      <!-- ! Text is misaligned -->
-      <div class="flex items-end flex-col sm:flex-row pb-4">
-        <div class="flex items-end">
-          <img
-            class="w-5"
-            src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-curl-vertical"
-            alt="ribbon curl"
-          />
-          <h2
-            class="font-heading text-black text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
-          >
-            Pre-Conference
-          </h2>
-        </div>
-        <h2 class="font-heading text-red text-6xl md:text-7xl lg:text-9xl">
-          28.07.22
+        <h2
+          class="pb-4 font-heading text-black text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
+        >
+          Pre-Conference <span class="text-red text-6xl md:text-7x lg:text-9xl">28.07.22</span>
         </h2>
-      </div>
       <div class="text-2xl font-semibold">
         <p>
           <time datetime="2022-07-28">July 28, 2022</time>
@@ -293,7 +280,6 @@ const schedule: Table[] = [
           >
         </p>
       </div>
-      <!-- ! Original page has black text, but website uses grey in other pages  -->
       <div class="flex flex-col gap-4 text-grey text-lg pt-8">
         <h3 class="text-2xl md:text-3xl font-semibold">Our Aim</h3>
         <p>
@@ -350,7 +336,7 @@ const schedule: Table[] = [
     id="youth-pavilion"
     class="bg-merino text-grey px-5vw md:px-10vw py-10vh pb-10vw"
   >
-    <div class="flex flex-col sm:flex-row gap-[5vw]">
+    <div class="flex flex-col md:flex-row gap-[5vw]">
       <article class="flex flex-col gap-4 text-grey text-lg">
         <h2 class="font-heading text-black text-6xl">Youth Pavilion</h2>
         <div class="text-2xl font-semibold leading-8">
@@ -392,8 +378,8 @@ const schedule: Table[] = [
     </div>
   </section>
   <section id="youth-reception" class="bg-black text-merino px-5vw py-10vw">
-    <div class="flex flex-col sm:flex-row gap-4">
-      <div class="font-heading text-6xl md:text-7xl lg:text-9xl text-red">
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="font-heading text-7xl lg:text-9xl text-red">
         <h2>31.07.22</h2>
       </div>
       <article class="flex flex-col gap-4 text-merino text-lg">
