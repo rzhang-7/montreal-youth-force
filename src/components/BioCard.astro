@@ -22,18 +22,18 @@ const { bgColour, person } = Astro.props;
   <div
     class="overlay hidden fixed left-0 top-0 z-10 w-screen h-screen bg-black/80"
   >
-    <div class="mx-[10vw] bg-merino text-grey flex gap-8 m-auto p-8">
-      <div class="flex-1"><img class="w-full" src={person.img.src} alt={person.img.alt} /></div>
+    <div class="mx-[5vw] sm:mx-[10vw] bg-merino text-grey max-h-[80%] overflow-scroll flex flex-col md:flex-row gap-8 m-auto p-8">
+      <div class="basis-2 md:order-last flex items-start justify-end">
+        <button class="close" type="button" aria-label="Close Bio">
+          <span
+            class="block w-4 h-0.5 mx-auto rounded-sm bg-black translate-y-0.5 -rotate-45"
+          ></span>
+          <span class="block w-4 h-0.5 mx-auto rounded-sm bg-black rotate-45"
+          ></span>
+        </button>
+      </div>
+      <div class="flex-1"><img class="w-full h-full object-cover" src={person.img.src} alt={person.img.alt} /></div>
       <article class="flex-1">
-        <div class="flex justify-end p-4">
-          <button class="close" type="button" aria-label="Close Bio">
-            <span
-              class="block w-4 h-0.5 mx-auto rounded-sm bg-black translate-y-0.5 -rotate-45"
-            ></span>
-            <span class="block w-4 h-0.5 mx-auto rounded-sm bg-black rotate-45"
-            ></span>
-          </button>
-        </div>
         <h3 class="text-3xl font-subheading">{person.name}</h3>
         <h4 class="text-lg font-subheading py-2.5">{person.title}</h4>
         <p class="text-base font-base">{person.bio}</p>
