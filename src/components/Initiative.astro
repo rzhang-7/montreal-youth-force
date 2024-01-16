@@ -71,7 +71,7 @@ const sections: Section[] = [
 {
   sections.map((item) => (
     <section
-      class={`${item.colours.bgColour} px-5vw py-10vh sm:px-10vw md:py-5vh`}
+      class={`initiative ${item.colours.bgColour} px-5vw py-10vh sm:px-10vw md:py-5vh`}
     >
       <h3
         class={`${item.colours.fontColour} hidden sm:block sm:order-first md:hidden font-body text-2xl sm:text-4xl font-semibold pb-5vh`}
@@ -83,18 +83,61 @@ const sections: Section[] = [
           <img class="w-full" src={item.img.src} alt={item.img.alt} />
         </h2>
         <article
-          class={`${item.colours.fontColour} hidden sm:flex flex-col justify-center gap-4 basis-1/2`}
+          class={`${item.colours.fontColour === "text-red" ? "text-grey sm:text-red" : `${item.colours.fontColour}`} flex flex-col justify-center gap-4 basis-1/2`}
         >
           <h3 class="block sm:hidden md:block font-body text-2xl sm:text-4xl font-semibold pb-5vh">
             {item.heading}
           </h3>
-          <div class="flex gap-4 flex-col">
+          <div class="section-body transition-[height] duration-[400ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] h-0 overflow-hidden sm:h-auto flex gap-4 flex-col">
             {item.body.map((text) => (
-              <p class="font=body text-lg leading-6">{text}</p>
+              <p class="font-body text-lg leading-6">{text}</p>
             ))}
+          </div>
+          <div class="sm:hidden text-center">
+            <button class="read-more text-current">
+              <img
+                class={`inline ${item.colours.bgColour === "bg-red" ? "brightness-0" : ""}`}
+                src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-curl-horizontal"
+                alt="ribbon curl"
+              />
+              Read More
+              <img
+                class={`inline ${item.colours.bgColour === "bg-red" ? "brightness-0" : ""}`}
+                src="https://res.cloudinary.com/letsstopaids/image/upload/f_auto,q_auto/v1/MonrealYouthForce/ribbon-curl-horizontal"
+                alt="ribbon curl"
+              />
+            </button>
           </div>
         </article>
       </div>
     </section>
   ))
 }
+
+<script>
+  import { toggleCSSClasses } from "../scripts/script.ts";
+
+  const initiativeSections = document.querySelectorAll("section.initiative")
+
+  initiativeSections.forEach((sect) => {
+    const readMoreButton = sect.querySelector("button.read-more") as HTMLButtonElement;
+    const sectionBody = sect.querySelector("div.section-body") as HTMLDivElement;
+
+    readMoreButton.addEventListener("click", () => {
+      // Height transition
+      // https://stackoverflow.com/a/44468310
+      const ch = sectionBody.clientHeight,
+        sh = sectionBody.scrollHeight,
+        isCollapsed = !ch;
+      sectionBody.style.height = (isCollapsed ? sh : 0) + "px";
+      toggleCSSClasses(sectionBody, "mb-8");
+
+      // Change button text
+      if(readMoreButton.childNodes[1].nodeValue === "\nRead More\n"){
+        readMoreButton.childNodes[1].nodeValue = "\nRead Less\n";
+      } else {
+        readMoreButton.childNodes[1].nodeValue = "\nRead More\n";
+      }
+    });
+  })
+</script>
